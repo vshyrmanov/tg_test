@@ -18,14 +18,18 @@ function App() {
   }, [test])
 
   // const onSendData = useCallback(() => {
-  //   const data = {
-  //     title: test
-  //   }
-  //   telegramApi.sendData(JSON.stringify(data))
+    const data = {
+      title: test
+    }
+    telegramApi.sendData(JSON.stringify(data))
   //   // onCloseHandler()
   // }, [test])
 
   const onSendData = () => {
+    const data = {
+      title: test
+    }
+    telegramApi.sendData(JSON.stringify(data))
     setShow(prev => !prev)
   }
 
