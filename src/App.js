@@ -3,10 +3,10 @@ import {useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 
 function App() {
-  const { tg, onCloseHandler, user, onToggleButton  } = useTelegram()
+  const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram()
 
   useEffect(() => {
-    tg?.ready();
+    telegramApi.ready();
   }, [])
 
 
