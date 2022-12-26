@@ -31,9 +31,9 @@ function App() {
   }, [])
 
   useEffect(() => {
-    telegramApi.onEvent('mainButtonClicked', onSendData)
+    telegramApi.MainButton.onClick(onSendData)
     return () => {
-      telegramApi.offEvent('mainButtonClicked', onSendData)
+      telegramApi.MainButton.offClick(onSendData)
     }
   }, [onSendData])
 
