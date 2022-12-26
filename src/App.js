@@ -5,6 +5,7 @@ import {useTelegram} from "./hooks/useTelegram";
 function App() {
   const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram()
   const [test, setTest] = useState('');
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     telegramApi.ready();
@@ -16,13 +17,17 @@ function App() {
     }
   }, [test])
 
-  const onSendData = useCallback(() => {
-    const data = {
-      title: test
-    }
-    telegramApi.sendData(JSON.stringify(data))
-    // onCloseHandler()
-  }, [test])
+  // const onSendData = useCallback(() => {
+  //   const data = {
+  //     title: test
+  //   }
+  //   telegramApi.sendData(JSON.stringify(data))
+  //   // onCloseHandler()
+  // }, [test])
+
+  const onSendData = () => {
+    setShow(prev => !prev)
+  }
 
   useEffect(() => {
     telegramApi.MainButton.setParams({
@@ -30,10 +35,17 @@ function App() {
     })
   }, [])
 
+  // useEffect(() => {
+  //   telegramApi.MainButton.onClick(onSendData)
+  //   return () => {
+  //     telegramApi.MainButton.offClick(onSendData)
+  //   }
+  // }, [])
+
   useEffect(() => {
-    telegramApi.MainButton.onClick(onSendData)
+    telegramApi.onEvent('mainButtonClicked', onSendData)
     return () => {
-      telegramApi.MainButton.offClick(onSendData)
+      telegramApi.offEvent('mainButtonClicked', onSendData)
     }
   }, [onSendData])
 
@@ -43,6 +55,7 @@ function App() {
       {/*<SimpleInput />*/}
       <input value={test} onChange={(e) => setTest(e.target.value)} />
       {user?.username && <span>{`Hello, ${user?.username}`}</span>}
+      {show && <span>GOOD JOB!!!</span>}
 
       {/*<button onClick={onToggleButton}>Довідка про склад родини</button>*/}
       <button onClick={onCloseHandler}>Закрити</button>
