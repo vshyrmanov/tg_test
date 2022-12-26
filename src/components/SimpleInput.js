@@ -11,6 +11,8 @@ const SimpleInput = (props) => {
 
   const nameInputChangeHandler = (event) => {
     setEnteredName(event.target.value);
+    onToggleButton()
+    // console.log('tty')
   }
 
   const nameInputBlurHandler = (event) => {
@@ -26,7 +28,7 @@ const SimpleInput = (props) => {
     // console.log(enteredName)
     setEnteredName('');
     setEnteredNameTouched(false);
-    onToggleButton()
+
   }
 
   const nameInputClasses = nameInputIsInvalid ? 'form-control invalid' : 'form-control'
@@ -66,9 +68,9 @@ const SimpleInput = (props) => {
         />
         {nameInputIsInvalid && <p className="error-text">Name must not be empty.</p>}
       </div>
-      <div className="form-actions">
-        <button>Додати документ</button>
-      </div>
+      {/*<div className="form-actions">*/}
+      {/*  <button>Додати документ</button>*/}
+      {/*</div>*/}
     </form>
   );
 };
