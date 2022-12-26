@@ -1,8 +1,10 @@
-import { useState } from "react";
+import {useCallback, useEffect, useState} from "react";
+import {useTelegram} from "../hooks/useTelegram";
 
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState('');
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+  const { telegramApi, onToggleButton } = useTelegram();
 
   const enteredNameIsValid = enteredName.trim() !== '';
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
@@ -21,17 +23,40 @@ const SimpleInput = (props) => {
     if (!enteredNameIsValid) {
       return
     }
-    console.log(enteredName)
+    // console.log(enteredName)
     setEnteredName('');
     setEnteredNameTouched(false);
+    onToggleButton()
   }
 
   const nameInputClasses = nameInputIsInvalid ? 'form-control invalid' : 'form-control'
 
+  const onSendData = useCallback(() => {
+   const data = {
+     title: enteredName
+   }
+   telegramApi.sendData(JSON.stringify(data))
+    onToggleButton()
+  }, [])
+
+  useEffect(() => {
+    telegramApi.MainButton.setParams({
+      text: 'Замовити документи'
+    })
+  }, [])
+
+  useEffect(() => {
+    telegramApi.onEvent('mainButtonClicked', onSendData)
+    return () => {
+      telegramApi.offEvent('mainButtonClicked', onSendData)
+
+    }
+  }, [])
+
   return (
     <form onSubmit={formSubmissionHandler}>
       <div className={nameInputClasses}>
-        <label htmlFor='name'>Your Name</label>
+        <label htmlFor='name'>Документ</label>
         <input
           type='text'
           id='name'
@@ -42,7 +67,7 @@ const SimpleInput = (props) => {
         {nameInputIsInvalid && <p className="error-text">Name must not be empty.</p>}
       </div>
       <div className="form-actions">
-        <button>Submit</button>
+        <button>Додати документ</button>
       </div>
     </form>
   );

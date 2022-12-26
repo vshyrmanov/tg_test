@@ -1,5 +1,5 @@
 import SimpleInput from './components/SimpleInput';
-import {useEffect} from "react";
+import {useCallback, useEffect} from "react";
 import {useTelegram} from "./hooks/useTelegram";
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
 
   return (
     <div className="app">
-      {/*<SimpleInput />*/}
+      <SimpleInput />
       {user?.username && <span>{`Hello, ${user?.username}`}</span>}
-      <button onClick={onToggleButton}>Тестова кнопка</button>
+      {/*<button onClick={onToggleButton}>Довідка про склад родини</button>*/}
       <button onClick={onCloseHandler}>Закрити</button>
     </div>
   );
