@@ -6,14 +6,14 @@ function App() {
   const { tg, onCloseHandler, user, onToggleButton  } = useTelegram()
 
   useEffect(() => {
-    tg.ready();
+    tg?.ready();
   }, [])
 
 
   return (
     <div className="app">
       {/*<SimpleInput />*/}
-      <span>{`Hello, ${user?.username}`}</span>
+      {user?.username && <span>{`Hello, ${user?.username}`}</span>}
       <button onClick={onToggleButton}>Тестова кнопка</button>
       <button onClick={onCloseHandler}>Закрити</button>
     </div>
