@@ -1,19 +1,20 @@
 import SimpleInput from './components/SimpleInput';
 import {useEffect} from "react";
-const tg = window.Telegram.WebApp;
+import {useTelegram} from "./hooks/useTelegram";
 
 function App() {
+  const { tg, onCloseHandler, user, onToggleButton  } = useTelegram()
 
   useEffect(() => {
     tg.ready();
   }, [])
 
-  const onCloseHandler = () => {
-    tg.close();
-  }
+
   return (
     <div className="app">
       {/*<SimpleInput />*/}
+      <span>{`Hello, ${user?.username}`}</span>
+      <button onClick={onToggleButton}>Тестова кнопка</button>
       <button onClick={onCloseHandler}>Закрити</button>
     </div>
   );
