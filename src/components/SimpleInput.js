@@ -51,7 +51,6 @@ const SimpleInput = (props) => {
     telegramApi.onEvent('mainButtonClicked', onSendData)
     return () => {
       telegramApi.offEvent('mainButtonClicked', onSendData)
-
     }
   }, [onSendData])
 
