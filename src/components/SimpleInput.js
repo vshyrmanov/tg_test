@@ -4,7 +4,7 @@ import {useTelegram} from "../hooks/useTelegram";
 const SimpleInput = (props) => {
   const [enteredName, setEnteredName] = useState('');
   const [enteredNameTouched, setEnteredNameTouched] = useState(false);
-  const { telegramApi, onToggleButton } = useTelegram();
+  const { telegramApi, onToggleButton, onCloseHandler } = useTelegram();
 
   const enteredNameIsValid = enteredName.trim() !== '';
   const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
@@ -36,8 +36,8 @@ const SimpleInput = (props) => {
      title: enteredName
    }
    telegramApi.sendData(JSON.stringify(data))
-    onToggleButton()
-  }, [])
+    onCloseHandler()
+  }, [enteredName])
 
   useEffect(() => {
     telegramApi.MainButton.setParams({
@@ -51,7 +51,7 @@ const SimpleInput = (props) => {
       telegramApi.offEvent('mainButtonClicked', onSendData)
 
     }
-  }, [])
+  }, [onSendData])
 
   return (
     <form onSubmit={formSubmissionHandler}>
