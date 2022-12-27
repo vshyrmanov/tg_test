@@ -33,9 +33,9 @@ function App() {
   //
   // }, [])
 
-  telegramApi.MainButton.onEvent('mainButtonClicked', () => {
-    telegramApi.sendData('Hello world')
-  })
+  const send = () => {
+    telegramApi.MainButton.onClick(() => telegramApi.sendData('Hello world'))
+  }
 
 
   return (
@@ -43,7 +43,7 @@ function App() {
       {/*<SimpleInput />*/}
       <input value={test} onChange={(e) => setTest(e.target.value)} />
       {user?.username && <span>{`Hello, ${user?.username}`}</span>}
-      <button>Send data</button>
+      <button onClick={send}>NEW DATA SEND</button>
       {/*<button onClick={onToggleButton}>Довідка про склад родини</button>*/}
       <button onClick={onCloseHandler}>Закрити</button>
     </div>
