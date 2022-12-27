@@ -22,6 +22,7 @@ const Register = () => {
 
 	const onSendData = useCallback(() => {
 		const data = {
+			register: true,
 			firstName,
 			lastName,
 		}
