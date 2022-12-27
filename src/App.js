@@ -33,9 +33,10 @@ function App() {
   //
   // }, [])
 
-  telegramApi.onEvent('mainButtonClicked', () => {
+  telegramApi.MainButton.onEvent('mainButtonClicked', () => {
     telegramApi.sendData('Hello world')
   })
+
 
   return (
     <div className="app">
