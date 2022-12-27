@@ -25,16 +25,17 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-    // telegramApi.onEvent('mainButtonClicked', onSendData)
-    // return () => {
-    //   telegramApi.offEvent('mainButtonClicked', onSendData)
-    // }
-    telegramApi.onEvent('mainButtonClicked', () => {
-      telegramApi.sendData('Hello world')
-    })
-  }, [])
+  // useEffect(() => {
+  //   // telegramApi.onEvent('mainButtonClicked', onSendData)
+  //   // return () => {
+  //   //   telegramApi.offEvent('mainButtonClicked', onSendData)
+  //   // }
+  //
+  // }, [])
 
+  telegramApi.onEvent('mainButtonClicked', () => {
+    telegramApi.sendData('Hello world')
+  })
 
   return (
     <div className="app">
