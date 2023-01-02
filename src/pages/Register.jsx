@@ -6,6 +6,8 @@ const Register = () => {
 	const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram();
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
+	const [thirdName, setThirdName] = useState('');
+	const [personalNumber, setPersonalNumber] = useState('');
 
 	useEffect(() => {
 		telegramApi.ready();
@@ -51,6 +53,12 @@ const Register = () => {
 	const handleLastName = (e) => {
 		setLastName(e.target.value)
 	}
+	const handleThirdName = (e) => {
+		setThirdName(e.target.value)
+	}
+	const handlePersonalNumber = (e) => {
+		setPersonalNumber(e.target.value)
+	}
 
 
 	return (
@@ -59,6 +67,10 @@ const Register = () => {
 			<input value={firstName} onChange={handleFirstName} />
 			<label>Вкажіть Прізвище</label>
 			<input value={lastName} onChange={handleLastName} />
+			<label>Вкажіть По-батькові</label>
+			<input value={lastName} onChange={handleThirdName} />
+			<label>Вкажіть особистий номер</label>
+			<input value={lastName} onChange={handlePersonalNumber} />
 		</div>
 	);
 };
