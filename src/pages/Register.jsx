@@ -24,13 +24,14 @@ const Register = () => {
 
 	const onSendData = useCallback(() => {
 		const data = {
-			register: true,
 			firstName,
 			lastName,
+			thirdName,
+			personalNumber
 		}
 
 		telegramApi.sendData(JSON.stringify(data))
-	}, [firstName, lastName])
+	}, [firstName, lastName, thirdName, personalNumber])
 
 	useEffect(() => {
 		telegramApi.MainButton.setParams({
@@ -68,9 +69,10 @@ const Register = () => {
 			<label>Вкажіть Прізвище</label>
 			<input value={lastName} onChange={handleLastName} />
 			<label>Вкажіть По-батькові</label>
-			<input value={lastName} onChange={handleThirdName} />
+			<input value={thirdName} onChange={handleThirdName} />
 			<label>Вкажіть особистий номер</label>
-			<input value={lastName} onChange={handlePersonalNumber} />
+			<input value={personalNumber} onChange={handlePersonalNumber} />
+			<button >check</button>
 		</div>
 	);
 };
