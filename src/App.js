@@ -8,35 +8,35 @@ import Admin from "./pages/Admin";
 import UserList from "./pages/UserList";
 
 function App() {
-  const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram()
-  const [test, setTest] = useState('');
-
-  useEffect(() => {
-    telegramApi.ready();
-    telegramApi.MainButton.show()
-  }, [])
-
-  const onSendData = useCallback(() => {
-    const data = {
-      title: test
-    }
-
-    telegramApi.sendData(JSON.stringify(data))
-  }, [test])
-
-  useEffect(() => {
-    telegramApi.MainButton.setParams({
-      text: 'Замовити документи'
-    })
-  }, [])
-
-  useEffect(() => {
-    telegramApi.onEvent('mainButtonClicked', onSendData)
-    return () => {
-      telegramApi.offEvent('mainButtonClicked', onSendData)
-    }
-
-  }, [onSendData])
+  // const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram()
+  // const [test, setTest] = useState('');
+  //
+  // useEffect(() => {
+  //   telegramApi.ready();
+  //   telegramApi.MainButton.show()
+  // }, [])
+  //
+  // const onSendData = useCallback(() => {
+  //   const data = {
+  //     title: test
+  //   }
+  //
+  //   telegramApi.sendData(JSON.stringify(data))
+  // }, [test])
+  //
+  // useEffect(() => {
+  //   telegramApi.MainButton.setParams({
+  //     text: 'Замовити документи'
+  //   })
+  // }, [])
+  //
+  // useEffect(() => {
+  //   telegramApi.onEvent('mainButtonClicked', onSendData)
+  //   return () => {
+  //     telegramApi.offEvent('mainButtonClicked', onSendData)
+  //   }
+  //
+  // }, [onSendData])
 
 
   const routes = useRoutes([
