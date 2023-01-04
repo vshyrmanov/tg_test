@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Home from './pages/Home';
 import Admin from "./pages/Admin";
 import UserList from "./pages/UserList";
+import ConfirmUser from "./pages/ConfirmUser";
 
 function App() {
   // const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram()
@@ -44,6 +45,7 @@ function App() {
     { path: 'register', element: <Register /> },
     { path: 'admin', element: <Admin /> },
     { path: 'userList', element: <UserList /> },
+    { path: 'confirmUser', element: <ConfirmUser /> },
     // { path: 'galerija', element: <Gallery /> },
     // { path: 'cjenovnik', element: <Prices /> },
     // { path: 'kontakt', element: <Contact /> }
