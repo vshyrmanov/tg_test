@@ -61,10 +61,12 @@ const Register = () => {
 		setPersonalNumber(e.target.value)
 	}
 
-
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
 			<p>{user?.id || "nothing"}</p>
+			<p>{user?.username || "nothing"}</p>
+			<p>{user?.first_name || "nothing"}</p>
+
 			<label>Вкажіть імя</label>
 			<input value={firstName} onChange={handleFirstName} />
 			<label>Вкажіть Прізвище</label>
