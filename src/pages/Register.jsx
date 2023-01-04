@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {useTelegram} from "../hooks/useTelegram";
-
+import {useLocation} from "react-router-dom";
 
 const Register = () => {
 	const { telegramApi, onCloseHandler, user, onToggleButton  } = useTelegram();
@@ -8,6 +8,7 @@ const Register = () => {
 	const [lastName, setLastName] = useState('');
 	const [thirdName, setThirdName] = useState('');
 	const [personalNumber, setPersonalNumber] = useState('');
+	const search = useLocation();
 
 	useEffect(() => {
 		telegramApi.ready();
@@ -63,9 +64,7 @@ const Register = () => {
 
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
-			<p>{user?.id || "nothing"}</p>
-			<p>{user?.username || "nothing"}</p>
-			<p>{user?.first_name || "nothing"}</p>
+			<p>{search?.search || "nothing"}</p>
 
 			<label>Вкажіть імя</label>
 			<input value={firstName} onChange={handleFirstName} />
