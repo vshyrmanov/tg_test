@@ -64,7 +64,7 @@ const Register = () => {
 
 	return (
 		<div style={{ display: 'flex', flexDirection: 'column' }}>
-			<p>{user && user}</p>
+			<p>{user?.id || "nothing"}</p>
 			<label>Вкажіть імя</label>
 			<input value={firstName} onChange={handleFirstName} />
 			<label>Вкажіть Прізвище</label>
