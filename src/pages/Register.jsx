@@ -9,7 +9,7 @@ const Register = () => {
 	const [thirdName, setThirdName] = useState('');
 	const [personalNumber, setPersonalNumber] = useState('');
 	const search = useLocation();
-
+	console.log(search)
 	useEffect(() => {
 		telegramApi.ready();
 		// telegramApi.MainButton.show()
